@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formatta Scientific | Manuscript Preparation & Editorial Services</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#171A1F',
+                            surface: '#1F242D',
+                            surfaceHover: '#2A303C',
+                            border: '#2E3543',
+                            blue: '#3F7CAC',
+                            blueHover: '#336891',
+                            lightBlue: '#8EBAD9',
+                            textMain: '#F4F6F8',
+                            textMuted: '#B8C0C8',
+                            accent: '#3F7CAC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        serif: ['Lora', 'Georgia', 'Cambria', 'serif'],
+                        mono: ['JetBrains Mono', 'Menlo', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #171A1F;
+            color: #F4F6F8;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #171A1F;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2A303C;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3F7CAC;
+        }
+        .modal-active {
+            overflow: hidden;
+        }
+
+        /* Mobile Density Adjustments (Screens < 640px) */
+        @media (max-width: 639px) {
+            .py-8, .py-10, .py-12 {
+                padding-top: 1.25rem !important;
+                padding-bottom: 1.25rem !important;
+            }
+            .p-5, .p-6 {
+                padding: 0.875rem !important;
+            }
+            .p-4 {
+                padding: 0.75rem !important;
+            }
+            .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 1.25rem !important;
+            }
+            .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 1rem !important;
+            }
+            .space-y-5 > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 0.875rem !important;
+            }
+            .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+                margin-top: 0.75rem !important;
+            }
+            h1.text-2xl, h1.text-3xl, h1.text-4xl {
+                font-size: 1.35rem !important;
+                line-height: 1.3 !important;
+            }
+            h2.text-lg, h2.text-xl, h2.text-2xl {
+                font-size: 1.1rem !important;
+                line-height: 1.35 !important;
+            }
+            .mb-6 {
+                margin-bottom: 1rem !important;
+            }
+            .mb-5 {
+                margin-bottom: 0.875rem !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-brand-textMain antialiased selection:bg-brand-blue selection:text-white flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-40 bg-brand-bg/95 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between">
+            <!-- Brand Mark -->
+            <a href="#home" onclick="navTo('home')" class="flex items-center gap-2.5 group">
+                <div class="w-7 h-7 rounded bg-brand-surface border border-brand-border flex items-center justify-center text-brand-lightBlue group-hover:border-brand-blue transition-colors">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-xs sm:text-sm font-bold tracking-wider text-brand-textMain font-serif uppercase leading-tight">Formatta</span>
+                    <span class="text-[9px] sm:text-[10px] font-semibold tracking-widest text-brand-lightBlue uppercase leading-none">Scientific</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Items -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-5 text-xs font-medium">
+                <button onclick="navTo('home')" id="nav-home" class="nav-btn py-1.5 px-2.5 text-brand-lightBlue border-b-2 border-brand-blue transition-colors">Home</button>
+                <button onclick="navTo('services')" id="nav-services" class="nav-btn py-1.5 px-2.5 text-brand-textMuted hover:text-brand-textMain transition-colors">Services</button>
+                <button onclick="navTo('pricing')" id="nav-pricing" class="nav-btn py-1.5 px-2.5 text-brand-textMuted hover:text-brand-textMain transition-colors">Pricing</button>
+                <button onclick="navTo('how-it-works')" id="nav-how-it-works" class="nav-btn py-1.5 px-2.5 text-brand-textMuted hover:text-brand-textMain transition-colors">How It Works</button>
+                <button onclick="navTo('about')" id="nav-about" class="nav-btn py-1.5 px-2.5 text-brand-textMuted hover:text-brand-textMain transition-colors">About</button>
+                <button onclick="navTo('faq')" id="nav-faq" class="nav-btn py-1.5 px-2.5 text-brand-textMuted hover:text-brand-textMain transition-colors">FAQ</button>
+            </nav>
+
+            <!-- Navigation Actions -->
+            <div class="flex items-center gap-3">
+                <button onclick="navTo('quote')" class="bg-brand-blue hover:bg-brand-blueHover text-white px-3.5 py-1.5 rounded text-xs font-semibold transition-all shadow-xs">
+                    Request a Quote
+                </button>
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-1.5 text-brand-textMuted hover:text-white rounded focus:outline-none">
+                    <i id="menu-icon" class="fa-solid fa-bars text-base"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-surface border-b border-brand-border px-4 py-3 space-y-1 text-xs">
+            <button onclick="navTo('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-brand-textMain hover:bg-brand-border">Home</button>
+            <button onclick="navTo('services'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-brand-textMuted hover:bg-brand-border">Services</button>
+            <button onclick="navTo('pricing'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-brand-textMuted hover:bg-brand-border">Pricing</button>
+            <button onclick="navTo('how-it-works'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-brand-textMuted hover:bg-brand-border">How It Works</button>
+            <button onclick="navTo('about'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-brand-textMuted hover:bg-brand-border">About</button>
+            <button onclick="navTo('faq'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 rounded text-brand-textMuted hover:bg-brand-border">FAQ</button>
+            <button onclick="navTo('quote'); toggleMobileMenu();" class="w-full mt-2 bg-brand-blue text-white py-2 rounded font-semibold text-center block">Request a Quote</button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HOME SECTION -->
+        <section id="sec-home" class="page-section">
+            <!-- Compact Editorial Hero Banner -->
+            <div class="py-8 sm:py-12 lg:py-14 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        
+                        <div class="lg:col-span-7 space-y-4 sm:space-y-5">
+                            <div class="inline-flex items-center gap-2 text-brand-lightBlue text-xs font-mono uppercase tracking-wider">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-blue"></span>
+                                Editorial & Bibliographic Manuscript Services
+                            </div>
+                            
+                            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-serif font-normal text-white leading-tight">
+                                Academic & Scientific Manuscript Preparation for International Publication
+                            </h1>
+                            
+                            <p class="text-xs sm:text-sm text-brand-textMuted max-w-xl font-normal leading-relaxed">
+                                Professional journal formatting, citation cross-checking, and English language editing strictly aligned with target journal author guidelines and peer-review standards.
+                            </p>
+
+                            <!-- Trust Pillars -->
+                            <div class="pt-1 flex flex-wrap gap-y-2 gap-x-6 text-xs text-brand-textMuted">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-brand-blue text-[11px]"></i>
+                                    <span>10+ Yrs Documentation Experience</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-brand-blue text-[11px]"></i>
+                                    <span>Target Journal Guidelines Compliance</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-check text-brand-blue text-[11px]"></i>
+                                    <span>Confidential Handling of Manuscripts</span>
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex flex-wrap gap-3">
+                                <button onclick="navTo('quote')" class="bg-brand-blue hover:bg-brand-blueHover text-white px-5 py-2.5 rounded text-xs font-semibold transition-colors flex items-center gap-2 shadow-sm">
+                                    <span>Request a Custom Quote</span>
+                                    <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                                <button onclick="navTo('pricing')" class="border border-brand-border hover:border-brand-textMuted text-brand-textMain px-5 py-2.5 rounded text-xs font-medium transition-colors">
+                                    View Service Pricing
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Abstract Editorial Graphic -->
+                        <div class="lg:col-span-5">
+                            <div class="border border-brand-border rounded bg-brand-surface p-4 sm:p-5 shadow-inner relative overflow-hidden">
+                                <div class="flex items-center justify-between pb-3 border-b border-brand-border/60 mb-3 text-[11px] font-mono text-brand-textMuted">
+                                    <span class="text-brand-lightBlue flex items-center gap-1.5">
+                                        <i class="fa-regular fa-file-lines text-xs"></i> SAMPLE EDITORIAL WORKFLOW
+                                    </span>
+                                    <span class="bg-brand-bg px-2 py-0.5 rounded border border-brand-border text-[10px]">APA 7th / IEEE</span>
+                                </div>
+
+                                <div class="space-y-3 font-mono text-[11px]">
+                                    <div class="p-2.5 rounded bg-brand-bg/80 border border-brand-border/60 space-y-1.5">
+                                        <div class="flex justify-between items-center text-[10px] text-brand-lightBlue">
+                                            <span>[1. AUTHOR GUIDELINES]</span>
+                                            <span class="text-emerald-400 text-[9px]"><i class="fa-solid fa-check"></i> Compliant</span>
+                                        </div>
+                                        <div class="h-1.5 bg-brand-border rounded w-11/12"></div>
+                                        <div class="h-1.5 bg-brand-border rounded w-4/5"></div>
+                                    </div>
+
+                                    <div class="p-2.5 rounded bg-brand-bg/80 border border-brand-border/60 space-y-1.5">
+                                        <div class="flex justify-between items-center text-[10px] text-brand-lightBlue">
+                                            <span>[2. CITATION & DOI CROSS-CHECK]</span>
+                                            <span class="text-emerald-400 text-[9px]"><i class="fa-solid fa-check"></i> DOIs Verified When Available</span>
+                                        </div>
+                                        <div class="text-[10px] text-brand-textMuted font-sans">
+                                            In-text citations matched against reference list entries; DOIs verified when available.
+                                        </div>
+                                    </div>
+
+                                    <div class="p-2.5 rounded bg-brand-bg/80 border border-brand-border/60 space-y-1.5">
+                                        <div class="flex justify-between items-center text-[10px] text-brand-lightBlue">
+                                            <span>[3. ENGLISH ACADEMIC EDITING]</span>
+                                            <span class="text-brand-lightBlue text-[9px]"><i class="fa-solid fa-pen-to-square"></i> Track Changes</span>
+                                        </div>
+                                        <div class="text-[10px] text-brand-textMuted font-sans">
+                                            Grammar, academic tone, sentence structure & term consistency polished.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 pt-3 border-t border-brand-border/60 flex items-center justify-between text-[11px]">
+                                    <span class="text-brand-textMuted">Lead Editorial Oversight:</span>
+                                    <span class="text-brand-lightBlue font-medium">Academic Librarian | 10+ Years of Experience</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Proposition Cards -->
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="border-b border-brand-border pb-3 mb-6">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Scope & Quality</span>
+                        <h2 class="text-lg sm:text-xl font-serif text-white">Meticulous Manuscript Preparation</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="p-5 rounded border border-brand-border bg-brand-surface space-y-2.5 flex flex-col justify-between">
+                            <div>
+                                <div class="w-8 h-8 rounded bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lightBlue mb-3">
+                                    <i class="fa-solid fa-sliders text-xs"></i>
+                                </div>
+                                <h3 class="text-sm font-semibold text-white font-serif mb-1.5">1. Author Guidelines Compliance</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Precise adjustment of typography, page margins, line spacing, section headings, title pages, and abstract layouts according to target journal requirements.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-brand-border/40 text-[11px] font-mono text-brand-lightBlue">
+                                Layout & Margins Standardized
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded border border-brand-border bg-brand-surface space-y-2.5 flex flex-col justify-between">
+                            <div>
+                                <div class="w-8 h-8 rounded bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lightBlue mb-3">
+                                    <i class="fa-solid fa-link text-xs"></i>
+                                </div>
+                                <h3 class="text-sm font-semibold text-white font-serif mb-1.5">2. Citation & DOI Verification</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Meticulous cross-checking between in-text citations and reference list entries, identifying discrepancies, missing records, and validating DOIs via Crossref.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-brand-border/40 text-[11px] font-mono text-brand-lightBlue">
+                                In-Text & Reference Cross-Check
+                            </div>
+                        </div>
+
+                        <div class="p-5 rounded border border-brand-border bg-brand-surface space-y-2.5 flex flex-col justify-between">
+                            <div>
+                                <div class="w-8 h-8 rounded bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lightBlue mb-3">
+                                    <i class="fa-solid fa-pen-nib text-xs"></i>
+                                </div>
+                                <h3 class="text-sm font-semibold text-white font-serif mb-1.5">3. English Language Editing</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Refining grammar, clarity, academic tone, and terminology fluency while strictly preserving original scientific meaning and author voice.
+                                </p>
+                            </div>
+                            <div class="pt-3 border-t border-brand-border/40 text-[11px] font-mono text-brand-lightBlue">
+                                Track Changes + Clean Version
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Estimate Calculator Widget on Home -->
+            <div class="py-10 border-b border-brand-border bg-brand-surface/30">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mx-auto">
+                        <div class="text-center mb-6">
+                            <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Instant Estimation</span>
+                            <h2 class="text-lg sm:text-xl font-serif text-white">Calculate Estimated Service Cost</h2>
+                            <p class="text-xs text-brand-textMuted mt-1">Select your service details below for an instant estimated cost.</p>
+                        </div>
+
+                        <div class="bg-brand-surface border border-brand-border rounded p-5 space-y-4 shadow-sm">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Select Core Service</label>
+                                    <select id="calc-service" onchange="calculateEstimate()" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="" selected disabled>Select a service...</option>
+                                        <option value="formatting">Journal Formatting (by Page count)</option>
+                                        <option value="references">References & Citations Check (by Ref count)</option>
+                                        <option value="editing">English Language Editing ($0.02 / word)</option>
+                                        <option value="submission">Submission-Ready Package (Words + Refs)</option>
+                                        <option value="abstract">Abstract Editing ($20 fixed ≤350 words)</option>
+                                        <option value="cover_edit">Cover Letter Editing ($20 fixed)</option>
+                                        <option value="cover_prep">Cover Letter Preparation ($35 fixed)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Turnaround Speed</label>
+                                    <select id="calc-speed" onchange="calculateEstimate()" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="standard">Standard (Up to 5 Business Days)</option>
+                                        <option value="priority">Priority (+30% surcharge — up to 48 Hours)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Inputs -->
+                            <div id="calc-inputs" class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-brand-border/60">
+                                <div id="input-pages-box" class="hidden">
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Pages (10-30p standard)</label>
+                                    <input type="number" id="calc-pages" value="" placeholder="e.g. 12" min="1" max="100" oninput="calculateEstimate()" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+
+                                <div id="input-words-box" class="hidden">
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Word Count</label>
+                                    <input type="number" id="calc-words" value="" placeholder="e.g. 4500" min="1" step="100" oninput="calculateEstimate()" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+
+                                <div id="input-refs-box" class="hidden">
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of References</label>
+                                    <input type="number" id="calc-refs" value="" placeholder="e.g. 35" min="1" max="200" oninput="calculateEstimate()" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                            </div>
+
+                            <!-- Output Summary -->
+                            <div class="mt-4 pt-4 border-t border-brand-border flex flex-col sm:flex-row items-center justify-between gap-4 bg-brand-bg/50 p-4 rounded border border-brand-border/50">
+                                <div>
+                                    <div class="text-[10px] font-mono text-brand-lightBlue uppercase">Estimated Total Investment</div>
+                                    <div class="text-2xl font-serif font-bold text-white" id="calc-result-price">--</div>
+                                    <div class="text-[11px] text-brand-textMuted mt-0.5" id="calc-result-terms">Select a service and details above to calculate estimation</div>
+                                </div>
+
+                                <button onclick="applyEstimateToQuote()" class="w-full sm:w-auto bg-brand-blue hover:bg-brand-blueHover text-white px-4 py-2 rounded text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                                    <span>Proceed with This Scope</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Author Resources Guidance -->
+            <div class="py-10">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between border-b border-brand-border pb-3 mb-6">
+                        <h2 class="text-base sm:text-lg font-serif text-white">Author Resources & Guidance</h2>
+                        <span class="text-xs text-brand-textMuted font-mono">Submission Insights</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="p-4 rounded border border-brand-border/60 bg-brand-surface/50 space-y-2 h-full flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue block mb-1">GUIDE 01</span>
+                                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Target Journal Selection</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Evaluate scope alignment, author guidelines, impact requirements, and open-access policies before structuring your manuscript.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded border border-brand-border/60 bg-brand-surface/50 space-y-2 h-full flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue block mb-1">GUIDE 02</span>
+                                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Structuring an Abstract</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Ensure clear presentation of background, objective, methodology, core quantitative results, and explicit conclusions within character limits.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded border border-brand-border/60 bg-brand-surface/50 space-y-2 h-full flex flex-col justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue block mb-1">GUIDE 03</span>
+                                <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Pre-Submission Checklist</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Verify author affiliations, funding disclosures, table cross-references in text, and ensure every reference entry has a validated DOI.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES SECTION -->
+        <section id="sec-services" class="page-section hidden">
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Editorial Solutions</span>
+                        <h1 class="text-2xl sm:text-3xl font-serif text-white mb-2">Our Specialized Manuscript Services</h1>
+                        <p class="text-xs sm:text-sm text-brand-textMuted">
+                            Detailed breakdown of editorial, bibliographic, and language preparation services tailored strictly to author guidelines and journal submission standards.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-10">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                    
+                    <!-- Service 1: Journal Formatting -->
+                    <div class="p-6 rounded border border-brand-border bg-brand-surface space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-3 border-b border-brand-border">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 01</span>
+                                <h2 class="text-lg font-serif text-white">Journal Formatting</h2>
+                            </div>
+                            <span class="text-xs font-mono bg-brand-bg px-2.5 py-1 rounded border border-brand-border text-brand-lightBlue">From $45 USD</span>
+                        </div>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            Full alignment of your document with the target journal, publisher, or institutional Author Guidelines.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="space-y-1.5 bg-brand-bg/50 p-3 rounded border border-brand-border/40">
+                                <span class="font-semibold text-white block text-[11px] uppercase tracking-wider text-brand-lightBlue">Inclusions:</span>
+                                <ul class="space-y-1 text-brand-textMuted list-disc list-inside">
+                                    <li>Font, page margins, line spacing, pagination, section headers & numbering</li>
+                                    <li>Title page, author affiliations, abstract, and mandatory formal sections</li>
+                                    <li>Formatting and positioning of existing tables, figures, titles & legends</li>
+                                    <li>In-text citation style and reference list formatting alignment</li>
+                                    <li>Final formal compliance checklist</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-1.5 bg-brand-bg/50 p-3 rounded border border-brand-border/40">
+                                <span class="font-semibold text-white block text-[11px] uppercase tracking-wider text-brand-lightBlue">Exclusions:</span>
+                                <ul class="space-y-1 text-brand-textMuted list-disc list-inside">
+                                    <li>Redrawing or reconstructing graphics/figures from raw data</li>
+                                    <li>Language, grammar, or stylistic editing</li>
+                                    <li>Deep scientific/substantive literature verification</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: References & Citations Check -->
+                    <div class="p-6 rounded border border-brand-border bg-brand-surface space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-3 border-b border-brand-border">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 02</span>
+                                <h2 class="text-lg font-serif text-white">References & Citations Check</h2>
+                            </div>
+                            <span class="text-xs font-mono bg-brand-bg px-2.5 py-1 rounded border border-brand-border text-brand-lightBlue">From $30 USD</span>
+                        </div>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            Rigorous cross-verification between in-text citations and reference list entries to eliminate bibliographic errors prior to submission.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="space-y-1.5 bg-brand-bg/50 p-3 rounded border border-brand-border/40">
+                                <span class="font-semibold text-white block text-[11px] uppercase tracking-wider text-brand-lightBlue">Inclusions:</span>
+                                <ul class="space-y-1 text-brand-textMuted list-disc list-inside">
+                                    <li>Cross-checking all in-text citations against the reference list and vice-versa</li>
+                                    <li>Identifying missing, orphaned, duplicate, or inconsistent reference entries</li>
+                                    <li>Verifying author names, publication year, title, journal name, volume & issue</li>
+                                    <li>Locating and appending verified DOIs via Crossref metadata</li>
+                                    <li>Ordering and formatting according to specified citation style</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-1.5 bg-brand-bg/50 p-3 rounded border border-brand-border/40">
+                                <span class="font-semibold text-white block text-[11px] uppercase tracking-wider text-brand-lightBlue">Exclusions:</span>
+                                <ul class="space-y-1 text-brand-textMuted list-disc list-inside">
+                                    <li>Evaluating if cited sources factually or scientifically support textual claims</li>
+                                    <li>Locating replacement papers for invalidly cited sources</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: English Language Editing -->
+                    <div class="p-6 rounded border border-brand-border bg-brand-surface space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-3 border-b border-brand-border">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 03</span>
+                                <h2 class="text-lg font-serif text-white">English Language Editing</h2>
+                            </div>
+                            <span class="text-xs font-mono bg-brand-bg px-2.5 py-1 rounded border border-brand-border text-brand-lightBlue">$0.02 / word (Min. $25)</span>
+                        </div>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            Linguistic polish for manuscripts written in English, enhancing clarity, sentence structure, and academic tone while preserving scientific meaning.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="space-y-1.5 bg-brand-bg/50 p-3 rounded border border-brand-border/40">
+                                <span class="font-semibold text-white block text-[11px] uppercase tracking-wider text-brand-lightBlue">Inclusions:</span>
+                                <ul class="space-y-1 text-brand-textMuted list-disc list-inside">
+                                    <li>Grammar, spelling, punctuation, sentence structure, and conciseness</li>
+                                    <li>Terminology consistency and academic tone adjustment</li>
+                                    <li>Delivered with Microsoft Word Track Changes + clean final document</li>
+                                    <li>Ambiguous passages flagged in a separate decision report</li>
+                                </ul>
+                            </div>
+                            <div class="space-y-1.5 bg-brand-bg/50 p-3 rounded border border-brand-border/40">
+                                <span class="font-semibold text-white block text-[11px] uppercase tracking-wider text-brand-lightBlue">Exclusions:</span>
+                                <ul class="space-y-1 text-brand-textMuted list-disc list-inside">
+                                    <li>Full translation from foreign languages</li>
+                                    <li>Developmental/Scientific Editing or methodological rewriting</li>
+                                    <li>Altering research findings, raw data, or author conclusions</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Submission-Ready Package -->
+                    <div class="p-6 rounded border border-brand-blue/40 bg-brand-surface space-y-4 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-brand-blue text-white text-[9px] font-mono uppercase px-3 py-0.5 rounded-bl">Most Comprehensive</div>
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 pb-3 border-b border-brand-border">
+                            <div>
+                                <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 04</span>
+                                <h2 class="text-lg font-serif text-white">Submission-Ready Manuscript Package</h2>
+                            </div>
+                            <span class="text-xs font-mono bg-brand-bg px-2.5 py-1 rounded border border-brand-border text-brand-lightBlue">From $125 USD</span>
+                        </div>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            All-inclusive preparation combining Journal Formatting, References & Citations Check, English Language Editing, and a Final Submission Checklist.
+                        </p>
+                        <div class="p-3 bg-brand-bg/70 rounded border border-brand-border text-xs text-brand-textMuted">
+                            <strong>Note on Deliverables:</strong> Receives Track Changes document, clean Word manuscript, formatted layout, verified references, and an official Final Submission Compliance Report ready for portal upload.
+                        </div>
+                    </div>
+
+                    <!-- Additional Services Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div class="p-5 rounded border border-brand-border bg-brand-surface space-y-2">
+                            <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 05</span>
+                            <h3 class="text-sm font-serif font-bold text-white">Abstract Editing</h3>
+                            <p class="text-xs text-brand-textMuted">
+                                Refining standalone abstract in English for conciseness, academic flow, word-limit compliance, and keyword consistency.
+                            </p>
+                            <div class="pt-2 text-xs font-mono text-brand-lightBlue">$20 USD (up to 350 words)</div>
+                        </div>
+
+                        <div class="p-5 rounded border border-brand-border bg-brand-surface space-y-2">
+                            <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 06</span>
+                            <h3 class="text-sm font-serif font-bold text-white">Cover Letter Editing</h3>
+                            <p class="text-xs text-brand-textMuted">
+                                Editing author-written cover letters for clarity, professional tone, grammar, and formal journal submission standards.
+                            </p>
+                            <div class="pt-2 text-xs font-mono text-brand-lightBlue">$20 USD fixed rate</div>
+                        </div>
+
+                        <div class="p-5 rounded border border-brand-border bg-brand-surface space-y-2">
+                            <span class="text-[10px] font-mono text-brand-lightBlue">SERVICE 07</span>
+                            <h3 class="text-sm font-serif font-bold text-white">Cover Letter Preparation</h3>
+                            <p class="text-xs text-brand-textMuted">
+                                Crafting a tailored cover letter from your manuscript and author disclosures. Never fabricates claims or exaggerated significance.
+                            </p>
+                            <div class="pt-2 text-xs font-mono text-brand-lightBlue">$35 USD fixed rate</div>
+                        </div>
+                    </div>
+
+                    <!-- Exclusions Disclaimer -->
+                    <div class="p-4 rounded border border-brand-border/60 bg-brand-surface/40 space-y-2">
+                        <h4 class="text-xs font-bold text-white font-serif uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-circle-info text-brand-lightBlue"></i> Services Excluded at Launch
+                        </h4>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            To maintain uncompromising quality, Formatta Scientific does <strong>not</strong> offer: full foreign-language translation, scientific/developmental editing, peer review simulation, statistical/methodological validation, graphical abstract creation, response to reviewers drafting, or creation/fabrication of research data.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section id="sec-pricing" class="page-section hidden">
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Approved Rates</span>
+                        <h1 class="text-2xl sm:text-3xl font-serif text-white mb-2">Transparent Service Pricing</h1>
+                        <p class="text-xs sm:text-sm text-brand-textMuted">
+                            Fixed and word-count-based rates according to official Master Document v1.0. No hidden processing fees.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-10">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+
+                    <!-- Pricing Tables -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Formatting -->
+                        <div class="border border-brand-border rounded bg-brand-surface p-5 space-y-3">
+                            <h2 class="text-sm font-serif font-bold text-white flex items-center justify-between border-b border-brand-border pb-2">
+                                <span>Journal Formatting</span>
+                                <span class="text-xs font-mono text-brand-lightBlue">By Page Count</span>
+                            </h2>
+                            <table class="w-full text-xs text-left text-brand-textMuted">
+                                <thead>
+                                    <tr class="border-b border-brand-border/60 text-brand-lightBlue font-mono text-[11px]">
+                                        <th class="py-1.5">Document Length</th>
+                                        <th class="py-1.5 text-right">Fixed Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-brand-border/40">
+                                    <tr><td class="py-2">Up to 10 pages</td><td class="py-2 text-right font-mono text-white">$45 USD</td></tr>
+                                    <tr><td class="py-2">11 – 20 pages</td><td class="py-2 text-right font-mono text-white">$65 USD</td></tr>
+                                    <tr><td class="py-2">21 – 30 pages</td><td class="py-2 text-right font-mono text-white">$85 USD</td></tr>
+                                    <tr><td class="py-2">Over 30 pages</td><td class="py-2 text-right font-mono text-brand-lightBlue">Custom Quote</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- References -->
+                        <div class="border border-brand-border rounded bg-brand-surface p-5 space-y-3">
+                            <h2 class="text-sm font-serif font-bold text-white flex items-center justify-between border-b border-brand-border pb-2">
+                                <span>References & Citations Check</span>
+                                <span class="text-xs font-mono text-brand-lightBlue">By Reference Count</span>
+                            </h2>
+                            <table class="w-full text-xs text-left text-brand-textMuted">
+                                <thead>
+                                    <tr class="border-b border-brand-border/60 text-brand-lightBlue font-mono text-[11px]">
+                                        <th class="py-1.5">Reference List Size</th>
+                                        <th class="py-1.5 text-right">Fixed Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-brand-border/40">
+                                    <tr><td class="py-2">Up to 20 references</td><td class="py-2 text-right font-mono text-white">$30 USD</td></tr>
+                                    <tr><td class="py-2">21 – 40 references</td><td class="py-2 text-right font-mono text-white">$55 USD</td></tr>
+                                    <tr><td class="py-2">41 – 60 references</td><td class="py-2 text-right font-mono text-white">$75 USD</td></tr>
+                                    <tr><td class="py-2">61 – 80 references</td><td class="py-2 text-right font-mono text-white">$95 USD</td></tr>
+                                    <tr><td class="py-2">81 – 100 references</td><td class="py-2 text-right font-mono text-white">$115 USD</td></tr>
+                                    <tr><td class="py-2">Over 100 references</td><td class="py-2 text-right font-mono text-brand-lightBlue">Custom Quote</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <!-- Submission Ready Package Table -->
+                    <div class="border border-brand-border rounded bg-brand-surface p-5 space-y-4">
+                        <h2 class="text-sm font-serif font-bold text-white border-b border-brand-border pb-2 flex items-center justify-between">
+                            <span>Submission-Ready Manuscript Package Rates</span>
+                            <span class="text-xs font-mono text-brand-lightBlue">Formatting + References + English Editing</span>
+                        </h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs text-left text-brand-textMuted">
+                                <thead>
+                                    <tr class="border-b border-brand-border text-brand-lightBlue font-mono text-[11px]">
+                                        <th class="py-2">Manuscript Scope</th>
+                                        <th class="py-2">Reference Inclusion Limit</th>
+                                        <th class="py-2 text-right">Total Package Rate</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-brand-border/40">
+                                    <tr><td class="py-2.5 font-medium text-white">Up to 3,000 words</td><td class="py-2.5">Up to 30 references</td><td class="py-2.5 text-right font-mono text-white">$125 USD</td></tr>
+                                    <tr><td class="py-2.5 font-medium text-white">3,001 – 5,000 words</td><td class="py-2.5">Up to 40 references</td><td class="py-2.5 text-right font-mono text-white">$120 USD</td></tr>
+                                    <tr><td class="py-2.5 font-medium text-white">5,001 – 7,000 words</td><td class="py-2.5">Up to 60 references</td><td class="py-2.5 text-right font-mono text-white">$225 USD</td></tr>
+                                    <tr><td class="py-2.5 font-medium text-white">7,001 – 10,000 words</td><td class="py-2.5">Up to 80 references</td><td class="py-2.5 text-right font-mono text-white">$295 USD</td></tr>
+                                    <tr><td class="py-2.5 font-medium text-white">Above 10,000 words / Theses</td><td class="py-2.5">Custom reference volume</td><td class="py-2.5 text-right font-mono text-brand-lightBlue">Custom Evaluation</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- English Language Editing Breakdown -->
+                    <div class="p-5 border border-brand-border rounded bg-brand-surface space-y-3">
+                        <h2 class="text-sm font-serif font-bold text-white border-b border-brand-border pb-2">
+                            English Language Editing — Word Count Calculation Examples
+                        </h2>
+                        <p class="text-xs text-brand-textMuted">
+                            Calculated at a flat <strong>$0.02 USD per word</strong> with a minimum order size of <strong>$25 USD</strong>.
+                        </p>
+                        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 font-mono text-xs text-center pt-2">
+                            <div class="p-2 bg-brand-bg rounded border border-brand-border"><span class="block text-brand-textMuted text-[10px]">1,000 Words</span><span class="text-white font-bold">$25 USD</span></div>
+                            <div class="p-2 bg-brand-bg rounded border border-brand-border"><span class="block text-brand-textMuted text-[10px]">3,000 Words</span><span class="text-white font-bold">$60 USD</span></div>
+                            <div class="p-2 bg-brand-bg rounded border border-brand-border"><span class="block text-brand-textMuted text-[10px]">5,000 Words</span><span class="text-white font-bold">$100 USD</span></div>
+                            <div class="p-2 bg-brand-bg rounded border border-brand-border"><span class="block text-brand-textMuted text-[10px]">8,000 Words</span><span class="text-white font-bold">$160 USD</span></div>
+                            <div class="p-2 bg-brand-bg rounded border border-brand-border"><span class="block text-brand-textMuted text-[10px]">10,000 Words</span><span class="text-white font-bold">$200 USD</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Turnarounds & Payment Terms Policy -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div class="p-4 rounded border border-brand-border bg-brand-surface/60 space-y-2">
+                            <h3 class="text-xs font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-brand-lightBlue"></i> Turnaround Speeds
+                            </h3>
+                            <ul class="text-xs text-brand-textMuted space-y-1.5 list-disc list-inside">
+                                <li><strong>Standard Turnaround:</strong> Up to 5 business days after payment confirmation & files.</li>
+                                <li><strong>Priority Service:</strong> Up to 48 hours (+30% surcharge, subject to review).</li>
+                                <li><strong>Urgent Requests (&lt;48h):</strong> Evaluated individually based on complexity.</li>
+                            </ul>
+                        </div>
+
+                        <div class="p-4 rounded border border-brand-border bg-brand-surface/60 space-y-2">
+                            <h3 class="text-xs font-serif font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                                <i class="fa-solid fa-credit-card text-brand-lightBlue"></i> Payment Structure (PayPal)
+                            </h3>
+                            <ul class="text-xs text-brand-textMuted space-y-1.5 list-disc list-inside">
+                                <li><strong>Orders &gt; $30 USD:</strong> 50% initial payment to start + 50% upon completion.</li>
+                                <li><strong>Orders $20 – $30 USD:</strong> 100% advance payment.</li>
+                                <li><strong>Preview Policy:</strong> Upon completion, a representative sample excerpt is provided for review; the final complete document is released upon receipt of the final 50% payment.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS SECTION -->
+        <section id="sec-how-it-works" class="page-section hidden">
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Process Transparency</span>
+                        <h1 class="text-2xl sm:text-3xl font-serif text-white mb-2">Step-by-Step Editorial Workflow</h1>
+                        <p class="text-xs sm:text-sm text-brand-textMuted">
+                            From quote request to final manuscript delivery: a seamless, accountable editorial process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-12">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="space-y-6 relative before:absolute before:inset-0 before:left-3.5 before:w-0.5 before:bg-brand-border">
+                        
+                        <div class="relative flex items-start gap-4 group">
+                            <div class="w-7 h-7 rounded-full bg-brand-surface border border-brand-blue flex items-center justify-center text-xs font-mono text-brand-lightBlue z-10 shrink-0">1</div>
+                            <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
+                                <h3 class="text-sm font-serif font-bold text-white">1. Request a Quote</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Fill out the submission form with document metrics (words, pages, references), citation style, target journal guidelines, and upload your manuscript (.docx).
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-start gap-4 group">
+                            <div class="w-7 h-7 rounded-full bg-brand-surface border border-brand-blue flex items-center justify-center text-xs font-mono text-brand-lightBlue z-10 shrink-0">2</div>
+                            <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
+                                <h3 class="text-sm font-serif font-bold text-white">2. Document Evaluation</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Our editorial lead reviews document scope, complexity, reference volume, guidelines, and turnaround feasibility before issuing an offer.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-start gap-4 group">
+                            <div class="w-7 h-7 rounded-full bg-brand-surface border border-brand-blue flex items-center justify-center text-xs font-mono text-brand-lightBlue z-10 shrink-0">3</div>
+                            <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
+                                <h3 class="text-sm font-serif font-bold text-white">3. Formal Quote & Payment Instructions</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    You receive a binding written quote via email detailing exact cost, delivery deadline, scope, and PayPal Business invoice details.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-start gap-4 group">
+                            <div class="w-7 h-7 rounded-full bg-brand-surface border border-brand-blue flex items-center justify-center text-xs font-mono text-brand-lightBlue z-10 shrink-0">4</div>
+                            <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
+                                <h3 class="text-sm font-serif font-bold text-white">4. Initial Payment & Execution</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    Upon receipt of initial payment (50% for orders &gt;$30, 100% for &le;$30), editorial work begins strictly within contracted scope.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-start gap-4 group">
+                            <div class="w-7 h-7 rounded-full bg-brand-surface border border-brand-blue flex items-center justify-center text-xs font-mono text-brand-lightBlue z-10 shrink-0">5</div>
+                            <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
+                                <h3 class="text-sm font-serif font-bold text-white">5. Excerpt Preview & Verification</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    For 50/50 payments, a representative sample excerpt is transmitted upon completion for author review and confirmation.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="relative flex items-start gap-4 group">
+                            <div class="w-7 h-7 rounded-full bg-brand-surface border border-brand-blue flex items-center justify-center text-xs font-mono text-brand-lightBlue z-10 shrink-0">6</div>
+                            <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
+                                <h3 class="text-sm font-serif font-bold text-white">6. Final Settlement & Complete File Delivery</h3>
+                                <p class="text-xs text-brand-textMuted leading-relaxed">
+                                    After settlement of remaining 50%, all completed files (Track Changes Word document, clean manuscript version, reference report, checklist) are released.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="sec-about" class="page-section hidden">
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Editorial Leadership</span>
+                        <h1 class="text-2xl sm:text-3xl font-serif text-white mb-2">About Formatta Scientific</h1>
+                        <p class="text-xs sm:text-sm text-brand-textMuted">
+                            Dedicated manuscript preparation backed by professional academic documentation expertise.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-12">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+                    
+                    <div class="p-6 rounded border border-brand-border bg-brand-surface space-y-4">
+                        <h2 class="text-lg font-serif text-white border-b border-brand-border pb-2">Professional Background & Experience</h2>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            Formatta Scientific was founded to deliver individualized, precise manuscript formatting and editorial services to authors preparing research for peer-reviewed journals.
+                        </p>
+                        <p class="text-xs text-brand-textMuted leading-relaxed">
+                            Editorial direction is provided by an experienced <strong>Academic Librarian with over 10 years of professional background in academic and scientific documentation</strong>, with direct experience in structuring and preparing manuscripts for submission to leading international peer-reviewed journals.
+                        </p>
+                        <div class="p-3 bg-brand-bg rounded border border-brand-border text-xs text-brand-lightBlue font-mono">
+                            Key Standard: No inflated credentials or unverified claims. Personalized editorial oversight for every manuscript.
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="p-5 border border-brand-border rounded bg-brand-surface space-y-2">
+                            <h3 class="text-sm font-serif font-bold text-white">Editorial Precision</h3>
+                            <p class="text-xs text-brand-textMuted leading-relaxed">
+                                We meticulously verify every margin, font hierarchy, reference entry, and citation pair against author instructions, minimizing administrative editorial rejections.
+                            </p>
+                        </div>
+
+                        <div class="p-5 border border-brand-border rounded bg-brand-surface space-y-2">
+                            <h3 class="text-sm font-serif font-bold text-white">Absolute Confidentiality</h3>
+                            <p class="text-xs text-brand-textMuted leading-relaxed">
+                                Author manuscripts, preliminary findings, figures, and personal information are treated with strict confidentiality and never published or shared.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="sec-faq" class="page-section hidden">
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">Author Assistance</span>
+                        <h1 class="text-2xl sm:text-3xl font-serif text-white mb-2">Frequently Asked Questions</h1>
+                        <p class="text-xs sm:text-sm text-brand-textMuted">
+                            Clear answers regarding accepted documents, payment policies, turnaround options, and revision rules.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-12">
+                <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3">
+                    
+                    <div class="border border-brand-border rounded bg-brand-surface overflow-hidden">
+                        <button onclick="toggleFaq(1)" class="w-full p-4 text-left font-serif text-xs sm:text-sm font-medium text-white flex justify-between items-center hover:bg-brand-surfaceHover transition-colors">
+                            <span>What types of documents are accepted?</span>
+                            <i id="faq-icon-1" class="fa-solid fa-chevron-down text-xs text-brand-lightBlue"></i>
+                        </button>
+                        <div id="faq-ans-1" class="hidden p-4 pt-0 text-xs text-brand-textMuted border-t border-brand-border/40 leading-relaxed bg-brand-bg/40">
+                            We accept Journal Articles, Book Chapters, Research Reports, Conference Papers, and other scholarly manuscripts in Microsoft Word (.docx) format. Theses and Dissertations receive custom quotes and deadlines.
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border rounded bg-brand-surface overflow-hidden">
+                        <button onclick="toggleFaq(2)" class="w-full p-4 text-left font-serif text-xs sm:text-sm font-medium text-white flex justify-between items-center hover:bg-brand-surfaceHover transition-colors">
+                            <span>Which citation styles and journal guidelines do you support?</span>
+                            <i id="faq-icon-2" class="fa-solid fa-chevron-down text-xs text-brand-lightBlue"></i>
+                        </button>
+                        <div id="faq-ans-2" class="hidden p-4 pt-0 text-xs text-brand-textMuted border-t border-brand-border/40 leading-relaxed bg-brand-bg/40">
+                            We support all major citation styles including APA (6th & 7th), Vancouver, Harvard, Chicago, IEEE, AMA, ACS, or custom guidelines specified directly in your target journal's Author Guidelines.
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border rounded bg-brand-surface overflow-hidden">
+                        <button onclick="toggleFaq(3)" class="w-full p-4 text-left font-serif text-xs sm:text-sm font-medium text-white flex justify-between items-center hover:bg-brand-surfaceHover transition-colors">
+                            <span>How does the 50/50 payment split work?</span>
+                            <i id="faq-icon-3" class="fa-solid fa-chevron-down text-xs text-brand-lightBlue"></i>
+                        </button>
+                        <div id="faq-ans-3" class="hidden p-4 pt-0 text-xs text-brand-textMuted border-t border-brand-border/40 leading-relaxed bg-brand-bg/40">
+                            For services totaling over $30 USD, you pay 50% upfront to initiate work. Upon completion, we send a small representative excerpt for verification. The full document is delivered immediately after final 50% payment via PayPal Business.
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border rounded bg-brand-surface overflow-hidden">
+                        <button onclick="toggleFaq(4)" class="w-full p-4 text-left font-serif text-xs sm:text-sm font-medium text-white flex justify-between items-center hover:bg-brand-surfaceHover transition-colors">
+                            <span>Does Formatta Scientific guarantee publication or journal acceptance?</span>
+                            <i id="faq-icon-4" class="fa-solid fa-chevron-down text-xs text-brand-lightBlue"></i>
+                        </button>
+                        <div id="faq-ans-4" class="hidden p-4 pt-0 text-xs text-brand-textMuted border-t border-brand-border/40 leading-relaxed bg-brand-bg/40">
+                            No. Formatta Scientific guarantees formal alignment with target journal formatting guidelines, reference verification, and language polish. Peer review evaluation and acceptance remain solely under the journal's peer-review editorial discretion.
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border rounded bg-brand-surface overflow-hidden">
+                        <button onclick="toggleFaq(5)" class="w-full p-4 text-left font-serif text-xs sm:text-sm font-medium text-white flex justify-between items-center hover:bg-brand-surfaceHover transition-colors">
+                            <span>What is your revision and correction policy?</span>
+                            <i id="faq-icon-5" class="fa-solid fa-chevron-down text-xs text-brand-lightBlue"></i>
+                        </button>
+                        <div id="faq-ans-5" class="hidden p-4 pt-0 text-xs text-brand-textMuted border-t border-brand-border/40 leading-relaxed bg-brand-bg/40">
+                            One round of adjustments is included free of charge within 7 days of delivery, provided requests remain strictly within the original scope. Target journal changes or substantial new manuscript content require a new evaluation.
+                        </div>
+                    </div>
+
+                    <div class="border border-brand-border rounded bg-brand-surface overflow-hidden">
+                        <button onclick="toggleFaq(6)" class="w-full p-4 text-left font-serif text-xs sm:text-sm font-medium text-white flex justify-between items-center hover:bg-brand-surfaceHover transition-colors">
+                            <span>How are unpublished manuscripts and data protected?</span>
+                            <i id="faq-icon-6" class="fa-solid fa-chevron-down text-xs text-brand-lightBlue"></i>
+                        </button>
+                        <div id="faq-ans-6" class="hidden p-4 pt-0 text-xs text-brand-textMuted border-t border-brand-border/40 leading-relaxed bg-brand-bg/40">
+                            All manuscripts are strictly confidential and used solely for fulfilling the contracted service. Working files are securely stored and deleted 30 days post-delivery. Client work is never published or used in portfolios without explicit written consent.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- REQUEST A QUOTE SECTION -->
+        <section id="sec-quote" class="page-section hidden">
+            <div class="py-10 border-b border-brand-border">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-2xl">
+                        <span class="text-[11px] font-mono text-brand-lightBlue uppercase tracking-wider block mb-1">No-Obligation Assessment</span>
+                        <h1 class="text-2xl sm:text-3xl font-serif text-white mb-2">Request a Manuscript Quote</h1>
+                        <p class="text-xs sm:text-sm text-brand-textMuted">
+                            Complete the fields below to receive a written quote, delivery schedule, and invoice details by email.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="py-10">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <form id="quoteForm" onsubmit="handleQuoteSubmit(event)" class="bg-brand-surface border border-brand-border rounded p-6 space-y-6 shadow-sm">
+                        
+                        <!-- 1. Contact Details -->
+                        <div>
+                            <h2 class="text-xs font-serif font-bold text-brand-lightBlue uppercase tracking-wider border-b border-brand-border pb-2 mb-4">
+                                1. Author & Contact Details
+                            </h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Full Name *</label>
+                                    <input type="text" required id="quote-name" placeholder="Dr. Jane Doe" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Email Address *</label>
+                                    <input type="email" required id="quote-email" placeholder="author@university.edu" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Country *</label>
+                                    <input type="text" required id="quote-country" placeholder="United States" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Manuscript Specifications -->
+                        <div>
+                            <h2 class="text-xs font-serif font-bold text-brand-lightBlue uppercase tracking-wider border-b border-brand-border pb-2 mb-4">
+                                2. Manuscript & Target Journal Specifications
+                            </h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Document Type *</label>
+                                    <select required id="quote-doctype" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="Journal Article">Journal Article</option>
+                                        <option value="Book Chapter">Book Chapter</option>
+                                        <option value="Thesis or Dissertation">Thesis or Dissertation (Custom Evaluation)</option>
+                                        <option value="Research Report">Research Report</option>
+                                        <option value="Conference Paper">Conference Paper</option>
+                                        <option value="Other">Other Manuscript</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Manuscript Title *</label>
+                                    <input type="text" required id="quote-title" placeholder="e.g., Analysis of Polymer Synthesis..." class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Target Journal / Publisher / Institution</label>
+                                    <input type="text" id="quote-journal" placeholder="e.g., Nature Communications / Elsevier" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Link to Author Guidelines (URL)</label>
+                                    <input type="url" id="quote-guidelines" placeholder="https://journal.org/authors/guidelines" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Metrics -->
+                        <div>
+                            <h2 class="text-xs font-serif font-bold text-brand-lightBlue uppercase tracking-wider border-b border-brand-border pb-2 mb-4">
+                                3. Document Metrics & Parameters
+                            </h2>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Word Count *</label>
+                                    <input type="number" required id="quote-words" placeholder="4500" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Page Count *</label>
+                                    <input type="number" required id="quote-pages" placeholder="15" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of References *</label>
+                                    <input type="number" required id="quote-refs" placeholder="40" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Tables</label>
+                                    <input type="number" id="quote-tables" value="2" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Figures</label>
+                                    <input type="number" id="quote-figures" value="3" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Charts/Graphs</label>
+                                    <input type="number" id="quote-charts" value="1" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Do any figures or charts need to be recreated?</label>
+                                    <select id="quote-recreate" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="No">No (Existing images formatted only)</option>
+                                        <option value="Yes">Yes (Evaluated separately on custom quote)</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Citation Style *</label>
+                                    <select required id="quote-style" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="Journal Guidelines">Follow target journal guidelines</option>
+                                        <option value="APA 7th">APA (7th edition)</option>
+                                        <option value="Vancouver">Vancouver</option>
+                                        <option value="Harvard">Harvard</option>
+                                        <option value="Chicago">Chicago</option>
+                                        <option value="AMA">AMA</option>
+                                        <option value="IEEE">IEEE</option>
+                                        <option value="Other">Other / Not Sure</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Service Requested -->
+                        <div>
+                            <h2 class="text-xs font-serif font-bold text-brand-lightBlue uppercase tracking-wider border-b border-brand-border pb-2 mb-4">
+                                4. Requested Service Scope & Turnaround
+                            </h2>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Requested Service *</label>
+                                    <select required id="quote-service" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="Journal Formatting">Journal Formatting</option>
+                                        <option value="References & Citations Check">References & Citations Check</option>
+                                        <option value="English Language Editing">English Language Editing</option>
+                                        <option value="Submission-Ready Manuscript">Submission-Ready Manuscript Package</option>
+                                        <option value="Abstract Editing">Abstract Editing</option>
+                                        <option value="Cover Letter Editing">Cover Letter Editing</option>
+                                        <option value="Cover Letter Preparation">Cover Letter Preparation</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-medium text-brand-textMuted mb-1">Turnaround Deadline *</label>
+                                    <select required id="quote-deadline" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                        <option value="Standard">Standard (Up to 5 Business Days)</option>
+                                        <option value="Priority">Priority (+30% surcharge — up to 48 Hours)</option>
+                                        <option value="Urgent">Urgent (&lt;48 Hours — Individual Assessment)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label class="block text-xs font-medium text-brand-textMuted mb-1">Attach Manuscript (.docx format)</label>
+                                <div class="relative border border-dashed border-brand-border hover:border-brand-blue rounded p-4 text-center cursor-pointer bg-brand-bg/50 transition-colors">
+                                    <input type="file" id="quote-file" accept=".docx" onchange="updateFileName(this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                                    <i class="fa-solid fa-cloud-arrow-up text-brand-lightBlue text-xl mb-1"></i>
+                                    <div id="file-label-text" class="text-xs text-brand-textMuted font-mono">Click or drag manuscript file (.docx) here</div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <label class="block text-xs font-medium text-brand-textMuted mb-1">Additional Instructions or Context</label>
+                                <textarea id="quote-notes" rows="3" placeholder="Provide any additional context, publisher notes, or special requirements..." class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Disclaimer & Submit -->
+                        <div class="pt-2 border-t border-brand-border space-y-4">
+                            <label class="flex items-start gap-2 text-xs text-brand-textMuted cursor-pointer">
+                                <input type="checkbox" required class="mt-0.5 rounded bg-brand-bg border-brand-border text-brand-blue focus:ring-0">
+                                <span>I understand that submitting this form does not constitute an order. I will receive a written quote, deadline, and payment instructions by email.</span>
+                            </label>
+
+                            <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blueHover text-white py-3 rounded font-semibold text-xs transition-colors shadow-sm flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane text-[11px]"></i>
+                                <span>Request My Quote</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SUCCESS MODAL -->
+    <div id="success-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-brand-surface border border-brand-border rounded max-w-md w-full p-6 space-y-4 text-center shadow-xl">
+            <div class="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-base font-serif font-bold text-white">Quote Request Received</h3>
+            <p class="text-xs text-brand-textMuted leading-relaxed">
+                Thank you. Your manuscript metrics and specifications have been transmitted. Our lead librarian will evaluate your document and send a formal quote and payment instructions to your email shortly.
+            </p>
+            <button onclick="closeSuccessModal()" class="w-full bg-brand-blue hover:bg-brand-blueHover text-white py-2 rounded text-xs font-semibold transition-colors">
+                Return to Home
+            </button>
+        </div>
+    </div>
+
+    <!-- POLICY MODAL -->
+    <div id="policy-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-brand-surface border border-brand-border rounded max-w-lg w-full p-6 space-y-4 shadow-xl relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-brand-textMuted hover:text-white">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <h3 id="modal-title" class="text-sm font-serif font-bold text-white border-b border-brand-border pb-2">Policy</h3>
+            <div id="modal-body" class="text-xs text-brand-textMuted space-y-3 leading-relaxed max-h-80 overflow-y-auto pr-2"></div>
+            <div class="pt-2 border-t border-brand-border text-right">
+                <button onclick="closeModal()" class="bg-brand-surface border border-brand-border hover:bg-brand-surfaceHover text-white px-4 py-1.5 rounded text-xs font-medium transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-surface border-t border-brand-border py-8 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-brand-border pb-6">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-6 h-6 rounded bg-brand-bg border border-brand-border flex items-center justify-center text-brand-lightBlue">
+                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-serif font-bold tracking-wider text-white uppercase">Formatta Scientific</span>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-brand-textMuted">
+                    <button onclick="openModal('privacy')" class="hover:text-white transition-colors">Privacy & Confidentiality</button>
+                    <span class="text-brand-border">•</span>
+                    <button onclick="openModal('terms')" class="hover:text-white transition-colors">Terms of Service</button>
+                    <span class="text-brand-border">•</span>
+                    <button onclick="openModal('cancellation')" class="hover:text-white transition-colors">Cancellation & Refund Policy</button>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-brand-textMuted">
+                <div>&copy; 2026 Formatta Scientific. All rights reserved. Professional Academic & Scientific Manuscript Preparation.</div>
+                <div class="flex items-center gap-2 text-brand-textMuted">
+                    <i class="fa-brands fa-paypal text-sm text-brand-lightBlue"></i>
+                    <span>Official Payments via PayPal Business</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- APPLICATION LOGIC JS -->
+    <script>
+        // Navigation Switcher
+        function navTo(sectionId) {
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.add('hidden'));
+
+            const targetSection = document.getElementById('sec-' + sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('text-brand-lightBlue', 'border-b-2', 'border-brand-blue');
+                btn.classList.add('text-brand-textMuted');
+            });
+
+            const activeBtn = document.getElementById('nav-' + sectionId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-brand-textMuted');
+                activeBtn.classList.add('text-brand-lightBlue', 'border-b-2', 'border-brand-blue');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // FAQ Accordion Toggle
+        function toggleFaq(id) {
+            const ans = document.getElementById('faq-ans-' + id);
+            const icon = document.getElementById('faq-icon-' + id);
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // File Label Updater
+        function updateFileName(input) {
+            const label = document.getElementById('file-label-text');
+            if (input.files && input.files[0]) {
+                label.innerText = 'Attached: ' + input.files[0].name;
+            } else {
+                label.innerText = 'Click or drag manuscript file (.docx) here';
+            }
+        }
+
+        // Instant Pricing Calculator Engine
+        function calculateEstimate() {
+            const service = document.getElementById('calc-service').value;
+            const speed = document.getElementById('calc-speed').value;
+            
+            const pagesBox = document.getElementById('input-pages-box');
+            const wordsBox = document.getElementById('input-words-box');
+            const refsBox = document.getElementById('input-refs-box');
+
+            // Reset visibility
+            pagesBox.classList.add('hidden');
+            wordsBox.classList.add('hidden');
+            refsBox.classList.add('hidden');
+
+            const priceEl = document.getElementById('calc-result-price');
+            const termsEl = document.getElementById('calc-result-terms');
+
+            if (!service) {
+                priceEl.innerText = "--";
+                termsEl.innerText = "Select a service and details above to calculate estimation";
+                return;
+            }
+
+            let price = 0;
+            let customNote = "";
+            let missingInput = false;
+
+            if (service === 'formatting') {
+                pagesBox.classList.remove('hidden');
+                const pagesVal = document.getElementById('calc-pages').value;
+                if (pagesVal === "" || pagesVal === null) {
+                    missingInput = true;
+                } else {
+                    const pages = parseInt(pagesVal) || 0;
+                    if (pages <= 10) price = 45;
+                    else if (pages <= 20) price = 65;
+                    else if (pages <= 30) price = 85;
+                    else customNote = "Custom Quote (>30 pages)";
+                }
+            } else if (service === 'references') {
+                refsBox.classList.remove('hidden');
+                const refsVal = document.getElementById('calc-refs').value;
+                if (refsVal === "" || refsVal === null) {
+                    missingInput = true;
+                } else {
+                    const refs = parseInt(refsVal) || 0;
+                    if (refs <= 20) price = 30;
+                    else if (refs <= 40) price = 55;
+                    else if (refs <= 60) price = 75;
+                    else if (refs <= 80) price = 95;
+                    else if (refs <= 100) price = 115;
+                    else customNote = "Custom Quote (>100 refs)";
+                }
+            } else if (service === 'editing') {
+                wordsBox.classList.remove('hidden');
+                const wordsVal = document.getElementById('calc-words').value;
+                if (wordsVal === "" || wordsVal === null) {
+                    missingInput = true;
+                } else {
+                    const words = parseInt(wordsVal) || 0;
+                    price = Math.max(25, words * 0.02);
+                }
+            } else if (service === 'submission') {
+                wordsBox.classList.remove('hidden');
+                refsBox.classList.remove('hidden');
+                const wordsVal = document.getElementById('calc-words').value;
+                const refsVal = document.getElementById('calc-refs').value;
+                if (wordsVal === "" || refsVal === "") {
+                    missingInput = true;
+                } else {
+                    const words = parseInt(wordsVal) || 0;
+                    const refs = parseInt(refsVal) || 0;
+                    if (words <= 3000 && refs <= 30) price = 125;
+                    else if (words <= 5000 && refs <= 40) price = 175;
+                    else if (words <= 7000 && refs <= 60) price = 225;
+                    else if (words <= 10000 && refs <= 80) price = 295;
+                    else customNote = "Custom Evaluation Scope";
+                }
+            } else if (service === 'abstract') {
+                price = 20;
+            } else if (service === 'cover_edit') {
+                price = 20;
+            } else if (service === 'cover_prep') {
+                price = 35;
+            }
+
+            if (missingInput) {
+                priceEl.innerText = "--";
+                termsEl.innerText = "Please enter the required document metrics above.";
+                return;
+            }
+
+            if (customNote) {
+                priceEl.innerText = "Custom Quote";
+                termsEl.innerText = customNote + " — Submit a quote request for a custom evaluation.";
+                return;
+            }
+
+            if (speed === 'priority') {
+                price = price * 1.30;
+            }
+
+            priceEl.innerText = "$" + price.toFixed(2) + " USD";
+
+            if (price > 30) {
+                termsEl.innerText = "50% upfront deposit ($" + (price * 0.5).toFixed(2) + ") + 50% upon delivery review.";
+            } else {
+                termsEl.innerText = "100% advance payment via PayPal Business ($" + price.toFixed(2) + ").";
+            }
+        }
+
+        function applyEstimateToQuote() {
+            const service = document.getElementById('calc-service').value;
+            const speed = document.getElementById('calc-speed').value;
+            const pages = document.getElementById('calc-pages').value;
+            const words = document.getElementById('calc-words').value;
+            const refs = document.getElementById('calc-refs').value;
+
+            navTo('quote');
+
+            if (service) {
+                const serviceMap = {
+                    'formatting': 'Journal Formatting',
+                    'references': 'References & Citations Check',
+                    'editing': 'English Language Editing',
+                    'submission': 'Submission-Ready Manuscript',
+                    'abstract': 'Abstract Editing',
+                    'cover_edit': 'Cover Letter Editing',
+                    'cover_prep': 'Cover Letter Preparation'
+                };
+                if (serviceMap[service]) {
+                    document.getElementById('quote-service').value = serviceMap[service];
+                }
+            }
+
+            if (speed === 'priority') {
+                document.getElementById('quote-deadline').value = 'Priority';
+            } else {
+                document.getElementById('quote-deadline').value = 'Standard';
+            }
+
+            if (pages) document.getElementById('quote-pages').value = pages;
+            if (words) document.getElementById('quote-words').value = words;
+            if (refs) document.getElementById('quote-refs').value = refs;
+        }
+
+        function handleQuoteSubmit(e) {
+            e.preventDefault();
+            document.getElementById('success-modal').classList.remove('hidden');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            document.body.classList.remove('modal-active');
+            navTo('home');
+        }
+
+        function openModal(type) {
+            const modal = document.getElementById('policy-modal');
+            const title = document.getElementById('modal-title');
+            const body = document.getElementById('modal-body');
+
+            if (type === 'privacy') {
+                title.innerText = "Privacy & Confidentiality Policy";
+                body.innerHTML = "<p>All manuscripts, research findings, author details, and correspondence submitted to Formatta Scientific are held in strict confidence. Working files are securely stored and permanently deleted 30 days post-delivery.</p><p>We never share, publish, or use author materials for marketing without express written consent.</p>";
+            } else if (type === 'terms') {
+                title.innerText = "Terms of Service";
+                body.innerHTML = "<p>Formatta Scientific provides manuscript formatting, reference checking, and English editing according to provided author guidelines. Service scope is strictly defined upon quote confirmation.</p><p>Formatta Scientific guarantees formal compliance within the contracted scope but does not guarantee journal publication or peer review outcome.</p>";
+            } else if (type === 'cancellation') {
+                title.innerText = "Cancellation & Refund Policy";
+                body.innerHTML = "<p><strong>Before work begins:</strong> 100% refund of fees paid (minus unrecoverable payment processing fees).</p><p><strong>After work begins:</strong> Initial 50% deposit is non-refundable.</p><p><strong>Revisions:</strong> Includes one round of complimentary adjustments requested within 7 days of delivery, within original scope.</p>";
+            }
+
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal() {
+            document.getElementById('policy-modal').classList.add('hidden');
+            document.body.classList.remove('modal-active');
+        }
+    </script>
+</body>
+</html>
