@@ -697,7 +697,7 @@
                                 </thead>
                                 <tbody class="divide-y divide-brand-border/40">
                                     <tr><td class="py-2.5 font-medium text-white">Up to 3,000 words</td><td class="py-2.5">Up to 30 references</td><td class="py-2.5 text-right font-mono text-white">$125 USD</td></tr>
-                                    <tr><td class="py-2.5 font-medium text-white">3,001 – 5,000 words</td><td class="py-2.5">Up to 40 references</td><td class="py-2.5 text-right font-mono text-white">$120 USD</td></tr>
+                                    <tr><td class="py-2.5 font-medium text-white">3,001 – 5,000 words</td><td class="py-2.5">Up to 40 references</td><td class="py-2.5 text-right font-mono text-white">$175 USD</td></tr>
                                     <tr><td class="py-2.5 font-medium text-white">5,001 – 7,000 words</td><td class="py-2.5">Up to 60 references</td><td class="py-2.5 text-right font-mono text-white">$225 USD</td></tr>
                                     <tr><td class="py-2.5 font-medium text-white">7,001 – 10,000 words</td><td class="py-2.5">Up to 80 references</td><td class="py-2.5 text-right font-mono text-white">$295 USD</td></tr>
                                     <tr><td class="py-2.5 font-medium text-white">Above 10,000 words / Theses</td><td class="py-2.5">Custom reference volume</td><td class="py-2.5 text-right font-mono text-brand-lightBlue">Custom Evaluation</td></tr>
@@ -775,7 +775,7 @@
                             <div class="p-4 rounded border border-brand-border bg-brand-surface flex-grow space-y-1">
                                 <h3 class="text-sm font-serif font-bold text-white">1. Request a Quote</h3>
                                 <p class="text-xs text-brand-textMuted leading-relaxed">
-                                    Fill out the submission form with document metrics (words, pages, references), citation style, target journal guidelines, and upload your manuscript (.docx).
+                                    Fill out the submission form with document metrics (words, pages, references), citation style, target journal guidelines, and submit your request.
                                 </p>
                             </div>
                         </div>
@@ -982,7 +982,7 @@
 
             <div class="py-10">
                 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <form id="quoteForm" onsubmit="handleQuoteSubmit(event)" class="bg-brand-surface border border-brand-border rounded p-6 space-y-6 shadow-sm">
+                    <form id="quoteForm" action="https://formspree.io/f/xyezyqpp" method="POST" onsubmit="handleQuoteSubmit(event)" class="bg-brand-surface border border-brand-border rounded p-6 space-y-6 shadow-sm">
                         
                         <!-- 1. Contact Details -->
                         <div>
@@ -992,15 +992,15 @@
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Full Name *</label>
-                                    <input type="text" required id="quote-name" placeholder="Dr. Jane Doe" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="text" required id="quote-name" name="Full Name" placeholder="Dr. Jane Doe" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Email Address *</label>
-                                    <input type="email" required id="quote-email" placeholder="author@university.edu" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="email" required id="quote-email" name="email" placeholder="author@university.edu" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Country *</label>
-                                    <input type="text" required id="quote-country" placeholder="United States" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="text" required id="quote-country" name="Country" placeholder="United States" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                             </div>
                         </div>
@@ -1013,7 +1013,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Document Type *</label>
-                                    <select required id="quote-doctype" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <select required id="quote-doctype" name="Document Type" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                         <option value="Journal Article">Journal Article</option>
                                         <option value="Book Chapter">Book Chapter</option>
                                         <option value="Thesis or Dissertation">Thesis or Dissertation (Custom Evaluation)</option>
@@ -1025,17 +1025,17 @@
 
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Manuscript Title *</label>
-                                    <input type="text" required id="quote-title" placeholder="e.g., Analysis of Polymer Synthesis..." class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="text" required id="quote-title" name="Manuscript Title" placeholder="e.g., Analysis of Polymer Synthesis..." class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Target Journal / Publisher / Institution</label>
-                                    <input type="text" id="quote-journal" placeholder="e.g., Nature Communications / Elsevier" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="text" id="quote-journal" name="Target Journal" placeholder="e.g., Nature Communications / Elsevier" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
 
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Link to Author Guidelines (URL)</label>
-                                    <input type="url" id="quote-guidelines" placeholder="https://journal.org/authors/guidelines" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="url" id="quote-guidelines" name="Author Guidelines URL" placeholder="https://journal.org/authors/guidelines" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                             </div>
                         </div>
@@ -1048,34 +1048,34 @@
                             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Word Count *</label>
-                                    <input type="number" required id="quote-words" placeholder="4500" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="number" required id="quote-words" name="Word Count" placeholder="4500" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Page Count *</label>
-                                    <input type="number" required id="quote-pages" placeholder="15" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="number" required id="quote-pages" name="Page Count" placeholder="15" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of References *</label>
-                                    <input type="number" required id="quote-refs" placeholder="40" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="number" required id="quote-refs" name="Number of References" placeholder="40" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Tables</label>
-                                    <input type="number" id="quote-tables" value="2" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="number" id="quote-tables" name="Number of Tables" value="2" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Figures</label>
-                                    <input type="number" id="quote-figures" value="3" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="number" id="quote-figures" name="Number of Figures" value="3" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Number of Charts/Graphs</label>
-                                    <input type="number" id="quote-charts" value="1" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <input type="number" id="quote-charts" name="Number of Charts" value="1" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Do any figures or charts need to be recreated?</label>
-                                    <select id="quote-recreate" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <select id="quote-recreate" name="Recreate Figures/Charts" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                         <option value="No">No (Existing images formatted only)</option>
                                         <option value="Yes">Yes (Evaluated separately on custom quote)</option>
                                     </select>
@@ -1083,7 +1083,7 @@
 
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Citation Style *</label>
-                                    <select required id="quote-style" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <select required id="quote-style" name="Citation Style" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                         <option value="Journal Guidelines">Follow target journal guidelines</option>
                                         <option value="APA 7th">APA (7th edition)</option>
                                         <option value="Vancouver">Vancouver</option>
@@ -1105,7 +1105,7 @@
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Requested Service *</label>
-                                    <select required id="quote-service" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <select required id="quote-service" name="Requested Service" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                         <option value="Journal Formatting">Journal Formatting</option>
                                         <option value="References & Citations Check">References & Citations Check</option>
                                         <option value="English Language Editing">English Language Editing</option>
@@ -1118,7 +1118,7 @@
 
                                 <div>
                                     <label class="block text-xs font-medium text-brand-textMuted mb-1">Turnaround Deadline *</label>
-                                    <select required id="quote-deadline" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
+                                    <select required id="quote-deadline" name="Turnaround Deadline" class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue">
                                         <option value="Standard">Standard (Up to 5 Business Days)</option>
                                         <option value="Priority">Priority (+30% surcharge — up to 48 Hours)</option>
                                         <option value="Urgent">Urgent (&lt;48 Hours — Individual Assessment)</option>
@@ -1127,28 +1127,29 @@
                             </div>
 
                             <div class="mt-4">
-                                <label class="block text-xs font-medium text-brand-textMuted mb-1">Attach Manuscript (.docx format)</label>
-                                <div class="relative border border-dashed border-brand-border hover:border-brand-blue rounded p-4 text-center cursor-pointer bg-brand-bg/50 transition-colors">
-                                    <input type="file" id="quote-file" accept=".docx" onchange="updateFileName(this)" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                                    <i class="fa-solid fa-cloud-arrow-up text-brand-lightBlue text-xl mb-1"></i>
-                                    <div id="file-label-text" class="text-xs text-brand-textMuted font-mono">Click or drag manuscript file (.docx) here</div>
+                                <label class="block text-xs font-medium text-brand-textMuted mb-1">Manuscript File Submission</label>
+                                <div class="p-3.5 bg-brand-bg/60 border border-brand-border/80 rounded text-xs text-brand-textMuted flex items-start gap-3">
+                                    <i class="fa-solid fa-circle-info text-brand-lightBlue text-sm mt-0.5 shrink-0"></i>
+                                    <span>Manuscript files are not required at this stage. After reviewing your request, we will contact you by email with instructions for securely sending your manuscript.</span>
                                 </div>
                             </div>
 
                             <div class="mt-4">
                                 <label class="block text-xs font-medium text-brand-textMuted mb-1">Additional Instructions or Context</label>
-                                <textarea id="quote-notes" rows="3" placeholder="Provide any additional context, publisher notes, or special requirements..." class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue"></textarea>
+                                <textarea id="quote-notes" name="Additional Instructions" rows="3" placeholder="Provide any additional context, publisher notes, or special requirements..." class="w-full bg-brand-bg border border-brand-border rounded px-3 py-2 text-xs text-white focus:outline-none focus:border-brand-blue"></textarea>
                             </div>
                         </div>
 
                         <!-- Disclaimer & Submit -->
                         <div class="pt-2 border-t border-brand-border space-y-4">
                             <label class="flex items-start gap-2 text-xs text-brand-textMuted cursor-pointer">
-                                <input type="checkbox" required class="mt-0.5 rounded bg-brand-bg border-brand-border text-brand-blue focus:ring-0">
+                                <input type="checkbox" required name="Agreement Confirmed" value="Yes" class="mt-0.5 rounded bg-brand-bg border-brand-border text-brand-blue focus:ring-0">
                                 <span>I understand that submitting this form does not constitute an order. I will receive a written quote, deadline, and payment instructions by email.</span>
                             </label>
 
-                            <button type="submit" class="w-full bg-brand-blue hover:bg-brand-blueHover text-white py-3 rounded font-semibold text-xs transition-colors shadow-sm flex items-center justify-center gap-2">
+                            <div id="form-error-msg" class="hidden text-xs text-rose-400 bg-rose-500/10 border border-rose-500/30 p-2.5 rounded"></div>
+
+                            <button type="submit" id="quote-submit-btn" class="w-full bg-brand-blue hover:bg-brand-blueHover text-white py-3 rounded font-semibold text-xs transition-colors shadow-sm flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-paper-plane text-[11px]"></i>
                                 <span>Request My Quote</span>
                             </button>
@@ -1167,7 +1168,7 @@
             </div>
             <h3 class="text-base font-serif font-bold text-white">Quote Request Received</h3>
             <p class="text-xs text-brand-textMuted leading-relaxed">
-                Thank you. Your manuscript metrics and specifications have been transmitted. Our lead librarian will evaluate your document and send a formal quote and payment instructions to your email shortly.
+                Your quote request has been sent successfully. We will contact you by email with a formal quote and payment instructions shortly.
             </p>
             <button onclick="closeSuccessModal()" class="w-full bg-brand-blue hover:bg-brand-blueHover text-white py-2 rounded text-xs font-semibold transition-colors">
                 Return to Home
@@ -1281,16 +1282,6 @@
             }
         }
 
-        // File Label Updater
-        function updateFileName(input) {
-            const label = document.getElementById('file-label-text');
-            if (input.files && input.files[0]) {
-                label.innerText = 'Attached: ' + input.files[0].name;
-            } else {
-                label.innerText = 'Click or drag manuscript file (.docx) here';
-            }
-        }
-
         // Instant Pricing Calculator Engine
         function calculateEstimate() {
             const service = document.getElementById('calc-service').value;
@@ -1363,11 +1354,19 @@
                 } else {
                     const words = parseInt(wordsVal) || 0;
                     const refs = parseInt(refsVal) || 0;
-                    if (words <= 3000 && refs <= 30) price = 125;
-                    else if (words <= 5000 && refs <= 40) price = 175;
-                    else if (words <= 7000 && refs <= 60) price = 225;
-                    else if (words <= 10000 && refs <= 80) price = 295;
-                    else customNote = "Custom Evaluation Scope";
+                    if (words > 10000 || refs > 80) {
+                        customNote = "Custom Evaluation Scope";
+                    } else if (words <= 3000 && refs <= 30) {
+                        price = 125;
+                    } else if (words <= 5000 && refs <= 40) {
+                        price = 175;
+                    } else if (words <= 7000 && refs <= 60) {
+                        price = 225;
+                    } else if (words <= 10000 && refs <= 80) {
+                        price = 295;
+                    } else {
+                        customNote = "Custom Evaluation Scope";
+                    }
                 }
             } else if (service === 'abstract') {
                 price = 20;
@@ -1393,13 +1392,8 @@
                 price = price * 1.30;
             }
 
-            priceEl.innerText = "$" + price.toFixed(2) + " USD";
-
-            if (price > 30) {
-                termsEl.innerText = "50% upfront deposit ($" + (price * 0.5).toFixed(2) + ") + 50% upon delivery review.";
-            } else {
-                termsEl.innerText = "100% advance payment via PayPal Business ($" + price.toFixed(2) + ").";
-            }
+            priceEl.innerText = "$" + Math.round(price) + " USD";
+            termsEl.innerText = (speed === 'priority' ? "Includes Priority Service (+30% surcharge — up to 48 hours)" : "Standard Turnaround (Up to 5 Business Days)") + " • 50/50 payment split for orders > $30";
         }
 
         function applyEstimateToQuote() {
@@ -1409,38 +1403,76 @@
             const words = document.getElementById('calc-words').value;
             const refs = document.getElementById('calc-refs').value;
 
-            navTo('quote');
+            // Map calculator values to quote form fields
+            if (service === 'formatting') document.getElementById('quote-service').value = 'Journal Formatting';
+            else if (service === 'references') document.getElementById('quote-service').value = 'References & Citations Check';
+            else if (service === 'editing') document.getElementById('quote-service').value = 'English Language Editing';
+            else if (service === 'submission') document.getElementById('quote-service').value = 'Submission-Ready Manuscript';
+            else if (service === 'abstract') document.getElementById('quote-service').value = 'Abstract Editing';
+            else if (service === 'cover_edit') document.getElementById('quote-service').value = 'Cover Letter Editing';
+            else if (service === 'cover_prep') document.getElementById('quote-service').value = 'Cover Letter Preparation';
 
-            if (service) {
-                const serviceMap = {
-                    'formatting': 'Journal Formatting',
-                    'references': 'References & Citations Check',
-                    'editing': 'English Language Editing',
-                    'submission': 'Submission-Ready Manuscript',
-                    'abstract': 'Abstract Editing',
-                    'cover_edit': 'Cover Letter Editing',
-                    'cover_prep': 'Cover Letter Preparation'
-                };
-                if (serviceMap[service]) {
-                    document.getElementById('quote-service').value = serviceMap[service];
-                }
-            }
-
-            if (speed === 'priority') {
-                document.getElementById('quote-deadline').value = 'Priority';
-            } else {
-                document.getElementById('quote-deadline').value = 'Standard';
-            }
+            if (speed === 'priority') document.getElementById('quote-deadline').value = 'Priority';
+            else document.getElementById('quote-deadline').value = 'Standard';
 
             if (pages) document.getElementById('quote-pages').value = pages;
             if (words) document.getElementById('quote-words').value = words;
             if (refs) document.getElementById('quote-refs').value = refs;
+
+            navTo('quote');
         }
 
-        function handleQuoteSubmit(e) {
+        // Formspree Quote Submission Handler
+        async function handleQuoteSubmit(e) {
             e.preventDefault();
-            document.getElementById('success-modal').classList.remove('hidden');
-            document.body.classList.add('modal-active');
+            const form = e.target;
+            const submitBtn = document.getElementById('quote-submit-btn');
+            const errorMsg = document.getElementById('form-error-msg');
+            const originalBtnHtml = submitBtn.innerHTML;
+
+            if (errorMsg) {
+                errorMsg.classList.add('hidden');
+                errorMsg.innerText = '';
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span>Sending Request...</span>';
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("https://formspree.io/f/xyezyqpp", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    document.getElementById('success-modal').classList.remove('hidden');
+                    document.body.classList.add('modal-active');
+                    form.reset();
+                } else {
+                    const data = await response.json();
+                    let msg = "There was a problem submitting your request. Please check the form and try again.";
+                    if (data && data.errors) {
+                        msg = data.errors.map(err => err.message).join(", ");
+                    }
+                    if (errorMsg) {
+                        errorMsg.innerText = msg;
+                        errorMsg.classList.remove('hidden');
+                    }
+                }
+            } catch (err) {
+                if (errorMsg) {
+                    errorMsg.innerText = "Network error. Please check your internet connection and try again.";
+                    errorMsg.classList.remove('hidden');
+                }
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
         }
 
         function closeSuccessModal() {
